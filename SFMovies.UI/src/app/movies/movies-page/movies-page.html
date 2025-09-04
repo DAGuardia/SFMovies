@@ -1,0 +1,45 @@
+<section class="search">
+    <h1>San Francisco Movies</h1>
+
+    <div class="controls">
+    <app-title-autocomplete
+        [(value)]="query"
+        [suggestions]="titles"
+        (valueChange)="loadSuggestions($event)"
+        (pick)="onPickFromAutocomplete($event)">
+        </app-title-autocomplete>
+
+        <button (click)="search()" [disabled]="loading">
+            {{ loading ? 'Buscando…' : 'Buscar' }}
+        </button>
+    </div>
+    <section class="empty" *ngIf="!movies.length && !loading && !error">
+        <p>Ingresá un título y presioná <em>Buscar</em> para ver resultados.</p>
+      </section>
+    <p class="error" *ngIf="error">{{ error }}</p>
+  </section>
+  <app-map [points]="mapPoints"></app-map>
+
+  <section class="results" *ngIf="movies.length">
+    <div class="card" *ngFor="let m of movies">
+      <h3>
+        {{ m.title }}
+        <small *ngIf="m.releaseYear">({{ m.releaseYear }})</small>
+      </h3>
+
+      <p class="meta" *ngIf="m.director"><b>Director:</b> {{ m.director }}</p>
+      <p class="meta" *ngIf="m.productionCompany"><b>Productora:</b> {{ m.productionCompany }}</p>
+
+      <ul class="locations">
+        <li *ngFor="let loc of m.locations">
+          <b>{{ loc.address }}</b>
+          <!-- <span *ngIf="loc.latitude != null && loc.longitude != null">
+            — ({{ loc.latitude }}, {{ loc.longitude }})
+          </span> -->
+          <div class="fun" *ngIf="loc.funFact">{{ loc.funFact }}</div>
+        </li>
+      </ul>
+    </div>
+  </section>
+
+  

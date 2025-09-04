@@ -1,0 +1,16 @@
+<mat-form-field class="full-width" appearance="outline">
+    <mat-label>Buscar película</mat-label>
+    <input
+      type="text"
+      matInput
+      [formControl]="control"
+      [matAutocomplete]="auto"
+      (keyup.enter)="enterPick()"
+      placeholder="Ant-Man, Vertigo…"/>
+  
+    <mat-autocomplete #auto="matAutocomplete" (optionSelected)="optionSelected($event)">
+      <mat-option *ngFor="let s of suggestions" [value]="s.value">
+        {{ s.value }}
+      </mat-option>
+    </mat-autocomplete>
+  </mat-form-field>
