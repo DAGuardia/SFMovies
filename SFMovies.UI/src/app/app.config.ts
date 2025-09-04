@@ -4,6 +4,7 @@ import { provideRouter } from '@angular/router';
 import { routes } from './app.routes';
 import { provideHttpClient } from '@angular/common/http';
 import { API_BASE_URL, Client } from './core/clients/sfmovies-client';
+import { environment } from '../environments/environment';
 
 export const appConfig: ApplicationConfig = {
   providers: [
@@ -11,7 +12,7 @@ export const appConfig: ApplicationConfig = {
     provideZoneChangeDetection({ eventCoalescing: true }),
     provideRouter(routes),
     //provideAnimations(),
-    provideHttpClient(),{ provide: API_BASE_URL, useValue: '/api' },
+    provideHttpClient(),{ provide: API_BASE_URL, useValue: environment.apiBaseUrl },
     Client
   ]
 };
