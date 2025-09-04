@@ -1,30 +1,61 @@
 # SFMovies – Film Locations in San Francisco
 
-Service + UI que muestran en un **mapa** dónde se filmaron películas en SF.  
-Permite **filtrar** por título con **autocompletado** (DataSF).
+Servicio + UI que muestran en un **mapa** dónde se filmaron películas en San Francisco.  
+Permite **filtrar** por título con **autocompletado**.
 
-Demo: https://sfmoviesmap.azurewebsites.net
+> Backend: .NET 8 · Frontend: Angular (standalone) · Mapas: Leaflet · Datos: DataSF `yitu-d5am`
 
-APi: https://sfmovies.azurewebsites.net/swagger/index.html
-
-## Tech
-- Backend: .NET 8, ASP.NET Core, HttpClient, Caching in-memory, Swagger.
-- Frontend: Angular, Standalone API, NSwag TypeScript client, Leaflet.
-- Data: https://data.sfgov.org/ (dataset `yitu-d5am`).
+## Demo (opcional)
+- UI: https://sfmoviesmap.azurewebsites.net
+- API: https://sfmovies.azurewebsites.net/swagger
 
 ## Estructura
-- `/backend` – solución .NET (Api / Application / Domain / Infrastructure / Tests)
-- `/ui/sfmovies-ui` – Angular app
+SFMovies/
+├─ backend/
+│ ├─ SFMoviesBackend.sln
+│ ├─ SFMovies.Api/ # ASP.NET Core Web API
+│ ├─ SFMovies.Application/ # Casos de uso / Servicios
+│ ├─ SFMovies.Domain/ # Entidades de dominio
+│ ├─ SFMovies.Infrastructure/ # Integrations + Adapters (HttpClient a DataSF)
+│ └─ SFMovies.Tests/ # xUnit
+└─ ui/
+└─ sfmovies-ui/ # Angular app (Leaflet, NSwag client)
 
-## Cómo correr (dev)
-```bash
-# Backend
+## Requisitos
+- .NET SDK 8.x
+- Node 20+ / PNPM o NPM
+- Token **Socrata App Token** (DataSF)
+
+## Ejecución local (dev)
+### Backend
 cd backend
 cp SFMovies.Api/appsettings.json.example SFMovies.Api/appsettings.Development.json
-dotnet build
+# editar AppToken y CORS
 dotnet run --project SFMovies.Api
+# Swagger en https://localhost:7192/swagger //revisar puerto
+
+### Frontend
+cd ui/sfmovies-ui
+npm install
+npm start
+# http://localhost:4200
+
+En dev la UI usa proxy /api → backend local.
+
+Build
+# Backend
+cd backend
+dotnet publish SFMovies.Api -c Release -o out
 
 # Frontend
 cd ../ui/sfmovies-ui
-npm install
-npm start
+ng build --configuration production
+
+Testing
+# Backend
+cd backend && dotnet test
+
+# Frontend (si configuraste Karma/Jest)
+cd ../ui/sfmovies-ui && npm test
+
+
