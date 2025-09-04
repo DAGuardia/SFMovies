@@ -34,3 +34,18 @@ Lista películas (paginable) con locations geocodificadas si están disponibles.
   }
 ]
 ```
+# GET /movies/suggest
+
+Autocomplete de títulos de películas.
+
+## Query Parameters
+- **prefix** (string, requerido, mínimo 2 caracteres)  
+- **limit** (int, opcional, por defecto 10, máximo 20)  
+
+## Respuesta `200 OK`
+```json
+[
+  { "value": "Ant-Man" },
+  { "value": "Ant-Man and the Wasp" }
+]
+```
