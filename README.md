@@ -3,6 +3,10 @@
 Service + UI que muestran en un **mapa** dónde se filmaron películas en SF.  
 Permite **filtrar** por título con **autocompletado** (DataSF).
 
+Demo: https://sfmoviesmap.azurewebsites.net
+
+APi: https://sfmovies.azurewebsites.net/swagger/index.html
+
 ## Tech
 - Backend: .NET 8, ASP.NET Core, HttpClient, Caching in-memory, Swagger.
 - Frontend: Angular, Standalone API, NSwag TypeScript client, Leaflet.
