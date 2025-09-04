@@ -5,7 +5,7 @@ Permite **filtrar** por título con **autocompletado**.
 
 > **Backend**: .NET 8 · **Frontend**: Angular (standalone) · **Mapas**: Leaflet · **Datos**: DataSF `yitu-d5am`
 
-## Demo (opcional)
+## Demo
 - **UI**: https://sfmoviesmap.azurewebsites.net  
 - **API**: https://sfmovies.azurewebsites.net/swagger  
 
