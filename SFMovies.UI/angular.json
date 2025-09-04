@@ -25,9 +25,20 @@
             "inlineStyleLanguage": "scss",
             "assets": [
               "src/favicon.ico",
-  { "glob": "**/*", "input": "public" },
-  { "glob": "**/*", "input": "src/assets", "output": "assets/" },
-  { "glob": "**/*", "input": "src/media",  "output": "media/" }
+              {
+                "glob": "**/*",
+                "input": "public"
+              },
+              {
+                "glob": "**/*",
+                "input": "src/assets",
+                "output": "assets/"
+              },
+              {
+                "glob": "**/*",
+                "input": "src/media",
+                "output": "media/"
+              }
             ],
             "styles": [
               "src/styles.scss"
@@ -91,8 +102,22 @@
               "src/styles.scss"
             ]
           }
+        },
+        "lint": {
+          "builder": "@angular-eslint/builder:lint",
+          "options": {
+            "lintFilePatterns": [
+              "src/**/*.ts",
+              "src/**/*.html"
+            ]
+          }
         }
       }
     }
+  },
+  "cli": {
+    "schematicCollections": [
+      "angular-eslint"
+    ]
   }
 }
