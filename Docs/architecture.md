@@ -19,7 +19,7 @@ INF --> DSF["DataSF HttpClient"]
 
 ## Mappers
 - Conversión de modelos externos al dominio.  
-- Lógica de parseo (ej: `release_year` como string).  
+- Lógica de parseo de datos no normalizados(ej: `release_year` como string).  
 
 ## API
 - Controladores REST.  
