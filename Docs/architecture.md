@@ -30,7 +30,8 @@ INF --> DSF["DataSF HttpClient"]
 ## Decisiones
 - **Sin DB**: lectura directa de DataSF (Socrata). Se mapea a dominio y se expone como DTO propio.  
 - **Autocomplete**: endpoint `/api/movies/suggest` con `prefix` y `limit`, Distinct case-insensitive.  
-- **Mapa**: Leaflet en UI; markers por MovieLocation con popup (título, año, director, cast).  
+- **Mapa**: Leaflet en UI; markers por MovieLocation con popup (título, año, director, cast).
+- **Cache**: In memory cache para resultados de sugerencias.  
 - **CORS**: configurado por `Cors:AllowedOrigins`.  
 
 ## Configuración
@@ -41,4 +42,4 @@ INF --> DSF["DataSF HttpClient"]
 ## Errores / Edge cases
 - `release_year` puede venir como string → se parsea seguro.  
 - Lat/long a veces ausentes → se omiten markers sin coordenadas.  
-- Dataset puede devolver duplicados de título/locación → se agrupan en UI.  
+- Fuente de datos no normalizada → se agrupan en backend.  
